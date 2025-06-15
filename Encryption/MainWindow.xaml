@@ -1,0 +1,84 @@
+﻿<Window x:Class="Encryption.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Encryption"
+        mc:Ignorable="d"
+        Title="Encryption" Height="350" Width="720" ResizeMode="NoResize">
+    
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Label Content="{Binding PasswordLocalisation}"/>
+            <TextBox Height="30" Width="360" Margin="5" Text="{Binding Password}" />
+        </StackPanel>
+        
+        <Separator Grid.Row="1"></Separator>
+
+        <TabControl Grid.Row="2">
+
+            <TabItem Header="{Binding SingleFileModeLocalisation}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <Label Content="{Binding FilePathLocalisation}"/>
+                        <TextBox Height="30" Width="360" Margin="5" Text="{Binding FileToEncryptFilePath}"/>
+                        <Button Grid.Row="2" Grid.Column="1" Width="120" Margin="5" Content="{Binding FindLocalisation}" Command="{Binding FindFileToEncryptCommand}"/>
+                        <Button Grid.Row="2" Grid.Column="1" Width="120" Margin="5" Content="{Binding EncryptLocalisation}" Command="{Binding EncryptCommand}"/>
+                    </StackPanel>
+                    <Separator Grid.Row="1"></Separator>
+                    <StackPanel Grid.Row="2" Orientation="Horizontal">
+                        <Label Content="{Binding FilePathLocalisation}"/>
+                        <TextBox Height="30" Width="360" Margin="5" Text="{Binding FileToDecryptFilePath}" />
+                        <Button Grid.Row="2" Grid.Column="1" Width="120" Margin="5" Content="{Binding FindLocalisation}" Command="{Binding FindFileToDecryptCommand}"/>
+                        <Button Grid.Row="2" Grid.Column="1" Width="120" Margin="5" Content="{Binding DecryptLocalisation}" Command="{Binding DecryptCommand}"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="{Binding DirectoryModeLocalisation}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <Label Content="{Binding FilePathLocalisation}"/>
+                        <TextBox Height="30" Width="360" Margin="5" Text="{Binding DirectoryToEncrypt}" />
+                        <Button Grid.Row="2" Grid.Column="1" Width="120" Margin="5" Content="{Binding FindDirectoryLocalisation}" Command="{Binding FindDirectoryToEncryptCommand}"/>
+                        <Button Grid.Row="2" Grid.Column="1" Width="120" Margin="5" Content="{Binding EncryptDirectoryLocalisation}" Command="{Binding EncryptDirectoryCommand}"/>
+                    </StackPanel>
+                    <Separator Grid.Row="1"></Separator>
+                    <StackPanel Grid.Row="2" Orientation="Horizontal">
+                        <Label Content="{Binding FilePathLocalisation}"/>
+                        <TextBox Height="30" Width="360" Margin="5" Text="{Binding DirectoryToDecrypt}" />
+                        <Button Grid.Row="2" Grid.Column="1" Width="120" Margin="5" Content="{Binding FindDirectoryLocalisation}" Command="{Binding FindDirectoryToDecryptCommand}"/>
+                        <Button Grid.Row="2" Grid.Column="1" Width="120" Margin="5" Content="{Binding DecryptDirectoryLocalisation}" Command="{Binding DecryptDirectoryCommand}"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            
+        </TabControl>
+
+        <ListBox Grid.Row="3" ItemsSource="{Binding Log}" Margin="10"/>
+        <Separator Grid.Row="4"></Separator>
+        <Button Grid.Row="5" Grid.Column="1" Width="120" Margin="5" Content="{Binding ClearLogLocalisation}" HorizontalAlignment="Left" Command="{Binding ClearLogCommand}"/>
+        
+    </Grid>
+    
+</Window>
