@@ -1,4 +1,4 @@
-# File Encryptor
+# File Encryption
 
 A basic file and directory encryption and decryption app written in C# using WPF.
 
